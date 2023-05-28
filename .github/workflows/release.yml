@@ -1,0 +1,24 @@
+name: Build Release
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "*"
+env:
+  projectName: "Unity"
+  packageName: "net.shivaduke28.upm-ci-sandbox"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: get version
+        id: version
+        uses: notiz-dev/github-action-json-property@7c8cf5cc36eb85d8d287a8086a39dac59628eb31
+        with:
+          path: "${{env.projectName}}/Packages/${{env.packageName}}/package.json"
+          prop_path: "version"
+      - run: echo ${{steps.version.output.prop}}
