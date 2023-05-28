@@ -2,11 +2,6 @@ name: Foo
 on: push
 jobs:
   bar1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: bar1
-        uses: ./.github/workflows/bar.yml
-      - name: bar2
-        uses: ./.github/workflows/bar.yml
+    uses: ./.github/workflows/bar.yml
+  bar2:
+    uses: ./.github/workflows/bar.yml
