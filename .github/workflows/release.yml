@@ -32,7 +32,7 @@ jobs:
         uses: thedoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
         with:
           type: "zip"
-          directory: "${{env.projetName}}/Packages/${{env.packageName}}/"
+          directory: "${{env.projectName}}/Packages/${{env.packageName}}/"
           filename: "../../../${{env.zipFile}}"
 
       - name: Make Release
