@@ -8,14 +8,10 @@ jobs:
   show-properties:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v3
-      - run: echo "main branch pushed"
-      - run: echo ${{ github.workflow }}
-      - run: echo ${{ github.ref }}
-      - run: echo ${{ github.sha }}
-
-      # - uses: actions/setup-node@v3
-      #   with:
-      #     node-version: "14"
-      # - run: npm install -g bats
-      # - run: bats -v
+      - name: Show github properties
+        run: |
+          echo "main branch pushed"
+          echo ${{ github.workflow }}
+          echo ${{ github.ref }}
+          echo ${{ github.sha }}
+          echo "main branch pushed"
