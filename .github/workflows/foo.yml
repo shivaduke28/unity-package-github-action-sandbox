@@ -4,6 +4,8 @@ jobs:
   bar1:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: bar1
         uses: ./.github/workflows/bar.yml
       - name: bar2
