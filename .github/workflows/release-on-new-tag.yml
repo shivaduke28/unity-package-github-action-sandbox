@@ -1,0 +1,17 @@
+name: Release on new tag
+run-name: ${{ github.actor }} add a new tag
+on:
+  push:
+    tags:
+    - '*'
+jobs:
+  show-properties:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show github properties
+        run: |
+          echo "main branch pushed"
+          echo ${{ github.workflow }}
+          echo ${{ github.ref }}
+          echo ${{ github.sha }}
+          echo "main branch pushed"
