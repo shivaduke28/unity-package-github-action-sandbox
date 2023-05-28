@@ -5,11 +5,15 @@ on:
     branches:
       - main
 jobs:
-  debug:
+  show-properties:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "main branch pushed"
       # - uses: actions/checkout@v3
+      - run: echo "main branch pushed"
+      - run: echo ${{ github.workflow }}
+      - run: echo ${{ github.ref }}
+      - run: echo ${{ github.sha }}
+
       # - uses: actions/setup-node@v3
       #   with:
       #     node-version: "14"
