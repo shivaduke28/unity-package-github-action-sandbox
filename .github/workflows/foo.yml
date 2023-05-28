@@ -2,6 +2,7 @@ name: Foo
 on: push
 jobs:
   bar1:
-    uses: ./.github/workflows/bar.yml
-  bar2:
-    uses: ./.github/workflows/bar.yml
+    uses: ./.github/composite/bar/action.yml
+    with:
+      hoge: "nyowa~"
+

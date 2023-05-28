@@ -1,0 +1,12 @@
+name: "Bar"
+description: "bar"
+inputs:
+  hoge:
+    required: true
+    description: "hoge..."
+
+runs:
+  using: "composite"
+  steps:
+    - run: echo ${{ inputs.hoge }}
+      shell: bash
