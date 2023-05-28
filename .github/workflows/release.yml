@@ -1,12 +1,17 @@
 name: Build Release
+
 on:
   workflow_dispatch:
   push:
     tags:
       - "*"
+
 env:
   projectName: "Unity"
   packageName: "net.shivaduke28.upm-ci-sandbox"
+
+permissions:
+  contents: write
 
 jobs:
   build:
