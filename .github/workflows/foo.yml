@@ -1,0 +1,10 @@
+name: Foo
+on: push
+jobs:
+  bar1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: bar1
+        uses: ./.github/workflows/bar.yml
+      - name: bar2
+        uses: ./.github/workflows/bar.yml

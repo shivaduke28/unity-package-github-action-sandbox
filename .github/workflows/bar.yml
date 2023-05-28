@@ -1,0 +1,11 @@
+name: Bar
+
+on:
+  workflow_call:
+
+jobs:
+  bar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "bar"
+        run: echo "bar"
