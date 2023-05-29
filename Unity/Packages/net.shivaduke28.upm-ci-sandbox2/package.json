@@ -1,0 +1,13 @@
+{
+  "name": "net.shivaduke28.upm-ci-sandbox2",
+  "version": "0.0.4",
+  "displayName": "UPM CI Sandbox",
+  "description": "sandbox package",
+  "unity": "2021.3",
+  "unityRelease": "11f1",
+  "keywords": [],
+  "author": {
+    "name": "shivaduke28"
+  },
+  "type": "tests"
+}
