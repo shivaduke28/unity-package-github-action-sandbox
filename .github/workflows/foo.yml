@@ -18,4 +18,14 @@ jobs:
           id: "yo2"
           projectName: "Unity"
           packageName: "net.shivaduke28.upm-ci-sandbox2"
-
+      - name: "check output"
+        run: |
+          echo ${{ steps.version.outputs.yo }}
+          echo ${{ steps.version.outputs.yo2 }}
+      - name: Make Release
+        uses: softprops/action-gh-release@1e07f4398721186383de40550babbdf2b84acfc5
+        with:
+          tag_name: ${{ github.sha }}
+          files: |
+            ${{ steps.version.outputs.yo }}
+            ${{ steps.version.outputs.yo2 }}
