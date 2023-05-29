@@ -7,18 +7,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: "Yo"
+        id: "yo"
         uses: ./.github/composite/create-zip
         with:
-          id: "yo"
           projectName: "Unity"
           packageName: "net.shivaduke28.upm-ci-sandbox"
       - name: "Yo2"
+        id: "yo2"
         uses: ./.github/composite/create-zip
         with:
-          id: "yo2"
           projectName: "Unity"
           packageName: "net.shivaduke28.upm-ci-sandbox2"
       - name: "check output"
         run: |
-          echo ${{ steps.yo.outputs }}
-          echo ${{ steps.yo2.outputs }}
+          echo ${{ steps.yo.outputs.zipFile }}
+          echo ${{ steps.yo2.outputs.zipFile }}

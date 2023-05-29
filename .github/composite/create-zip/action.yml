@@ -1,9 +1,6 @@
 name: "Create Zip"
 description: "create zip of unity packages"
 inputs:
-  id:
-    required: true
-    description: "id of outputs"
   projectName:
     required: true
     description: "name of the Unity project directory"
@@ -20,6 +17,7 @@ runs:
       with:
         path: "${{ inputs.projectName }}/Packages/${{ inputs.packageName }}/package.json"
         prop_path: "version"
+    # envに入れるのよくなさそう
     - name: Set Environment Variables
       run: |
         echo "zipFile=${{ inputs.packageName }}-${{ steps.version.outputs.prop }}".zip >> $GITHUB_ENV
@@ -31,5 +29,5 @@ runs:
         directory: "${{ inputs.projectName }}/Packages/${{ inputs.packageName }}/"
         filename: "../../../${{ env.zipFile }}"
     - name: Set output
-      run: echo "${{ inputs.id }}=${{ env.zipFile }}" >> $GITHUB_OUTPUT
+      run: echo "zipFile=${{ env.zipFile }}" >> $GITHUB_OUTPUT
       shell: bash
