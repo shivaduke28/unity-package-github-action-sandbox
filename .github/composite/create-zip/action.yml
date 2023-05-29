@@ -7,6 +7,10 @@ inputs:
   packageName:
     required: true
     description: "name of the directory in Packages"
+outputs:
+  zipFile:
+    description: "name of zip file"
+    value: ${{ steps.set-zip-file.outputs.zipFile }}
 
 runs:
   using: "composite"
@@ -17,10 +21,9 @@ runs:
       with:
         path: "${{ inputs.projectName }}/Packages/${{ inputs.packageName }}/package.json"
         prop_path: "version"
-    # envに入れるのよくなさそう
-    - name: Set Environment Variables
-      run: |
-        echo "zipFile=${{ inputs.packageName }}-${{ steps.version.outputs.prop }}".zip >> $GITHUB_ENV
+    - name: Set Output
+      id: set-zip-file
+      run: echo "zipFile=${{ inputs.packageName }}-${{ steps.version.outputs.prop }}".zip >> $GITHUB_OUTPUT
       shell: bash
     - name: Create Zip
       uses: thedoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
@@ -28,6 +31,3 @@ runs:
         type: "zip"
         directory: "${{ inputs.projectName }}/Packages/${{ inputs.packageName }}/"
         filename: "../../../${{ env.zipFile }}"
-    - name: Set output
-      run: echo "zipFile=${{ env.zipFile }}" >> $GITHUB_OUTPUT
-      shell: bash
